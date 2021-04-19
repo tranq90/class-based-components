@@ -22,14 +22,17 @@ class Users extends Component {
   }
 
   render() {
-    const DUMMY_USERS = [
-      { id: "u1", name: "Max" },
-      { id: "u2", name: "Manuel" },
-      { id: "u3", name: "Julie" },
-    ];
+    const userList = (
+      <ul>
+        {this.props.users.map((user) => (
+          <User key={user.id} name={user.name} />
+        ))}
+      </ul>
+    );
 
     return (
       <div className={classes.users}>
+        {userList}
         <button onClick={this.toggleUsersHandler.bind(this)}>
           {this.state.showUsers ? "Hide" : "Show"} Users
         </button>
